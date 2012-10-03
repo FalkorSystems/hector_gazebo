@@ -135,12 +135,6 @@ void GazeboRosSonar::Update()
     if (ray < range_.range) range_.range = ray;
   }
 
-  std::cout << std::fixed;
-  std::cout << sensor_->GetLaserShape()->GetRange(2) << " " << sensor_->GetLaserShape()->GetRange(1) << " " << sensor_->GetLaserShape()->GetRange(0) << std::endl;
-  std::cout << sensor_->GetLaserShape()->GetRange(5) << " " << sensor_->GetLaserShape()->GetRange(4) << " " << sensor_->GetLaserShape()->GetRange(3) << std::endl;
-  std::cout << sensor_->GetLaserShape()->GetRange(8) << " " << sensor_->GetLaserShape()->GetRange(7) << " " << sensor_->GetLaserShape()->GetRange(6) << std::endl;
-  std::cout << " => min of " << num_ranges << " ranges = " << range_.range << std::endl;
-
   // add Gaussian noise (and limit to min/max range)
   if (range_.range < range_.max_range) {
     range_.range += sensor_model_.update(dt);
