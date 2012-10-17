@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 
 <launch>
+  <arg name="gui" default="true" />
+
   <include file="$(find hector_gazebo_worlds)/launch/start.launch">
    <arg name="world" value="$(find hector_gazebo_worlds)/worlds/rolling_landscape_120m.world"/> 
+   <arg name="gui" value="$(arg gui)" />
   </include>
 
 </launch>

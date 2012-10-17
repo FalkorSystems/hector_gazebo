@@ -75,7 +75,7 @@ void GazeboRosMagnetic::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   }
   else {
     link_name_ = _sdf->GetElement("bodyName")->GetValueString();
-    link = boost::shared_dynamic_cast<physics::Link>(world->GetEntity(link_name_));
+    link = _model->GetLink( link_name_ );
   }
 
   if (!link)
