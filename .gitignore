@@ -1,0 +1,11 @@
+hector_gazebo_plugins/build/
+hector_gazebo_plugins/lib/
+hector_gazebo_plugins/src/hector_gazebo_plugins/
+hector_gazebo_plugins/srv_gen/
+hector_gazebo_thermal_camera/build/
+hector_gazebo_thermal_camera/cfg/GazeboRosThermalCamera.cfgc
+hector_gazebo_thermal_camera/cfg/cpp/
+hector_gazebo_thermal_camera/docs/
+hector_gazebo_thermal_camera/lib/
+hector_gazebo_thermal_camera/src/hector_gazebo_thermal_camera/
+hector_gazebo_worlds/build/
