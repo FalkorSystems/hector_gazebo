@@ -78,6 +78,8 @@ void GazeboRosMagnetic::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     link = _model->GetLink( link_name_ );
   }
 
+  ROS_INFO_NAMED( "gazebo_ros_magnetic", "got link %s for model %s for mag", link->GetName().c_str(), link->GetModel()->GetName().c_str() );
+
   if (!link)
   {
     ROS_FATAL("GazeboRosMagnetic plugin error: bodyName: %s does not exist\n", link_name_.c_str());

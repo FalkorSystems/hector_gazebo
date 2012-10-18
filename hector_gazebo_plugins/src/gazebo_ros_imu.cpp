@@ -109,6 +109,8 @@ void GazeboRosIMU::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     link = _model->GetLink( linkName );
   }
 
+  ROS_INFO_NAMED( "gazebo_ros_imu", "got link %s for model %s for imu", link->GetName().c_str(), link->GetModel()->GetName().c_str() );
+
   // assert that the body by linkName exists
   if (!link)
   {
