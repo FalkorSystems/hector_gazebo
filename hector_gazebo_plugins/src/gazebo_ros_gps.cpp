@@ -118,7 +118,7 @@ void GazeboRosGps::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   if (!_sdf->HasElement("referenceAltitude"))
     reference_altitude_ = DEFAULT_REFERENCE_ALTITUDE;
   else
-    reference_altitude_ = _sdf->GetElement("referenceLatitude")->GetValueDouble();
+    reference_altitude_ = _sdf->GetElement("referenceAltitude")->GetValueDouble();
 
   if (!_sdf->HasElement("status"))
     status_ = sensor_msgs::NavSatStatus::STATUS_FIX;
