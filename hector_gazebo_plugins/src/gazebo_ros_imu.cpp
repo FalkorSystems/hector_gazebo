@@ -302,10 +302,11 @@ void GazeboRosIMU::Update()
   imuMsg.header.stamp.nsec = cur_time.nsec;
 
   // orientation quaternion
-  imuMsg.orientation.x = pose.rot.x;
-  imuMsg.orientation.y = pose.rot.y;
-  imuMsg.orientation.z = pose.rot.z;
-  imuMsg.orientation.w = pose.rot.w;
+  // don't publish this, real 6DOF IMUs dont
+  // imuMsg.orientation.x = pose.rot.x;
+  // imuMsg.orientation.y = pose.rot.y;
+  // imuMsg.orientation.z = pose.rot.z;
+  // imuMsg.orientation.w = pose.rot.w;
 
   // pass angular rates
   imuMsg.angular_velocity.x    = rate.x;
@@ -317,15 +318,16 @@ void GazeboRosIMU::Update()
   imuMsg.linear_acceleration.y    = accel.y;
   imuMsg.linear_acceleration.z    = accel.z;
 
+  // orientation isn't published by real IMUs so don't include it
   // fill in covariance matrix
-  imuMsg.orientation_covariance[8] = headingModel.gaussian_noise*headingModel.gaussian_noise;
-  if (gravity_length > 0.0) {
-    imuMsg.orientation_covariance[0] = accelModel.gaussian_noise.x*accelModel.gaussian_noise.x/(gravity_length*gravity_length);
-    imuMsg.orientation_covariance[4] = accelModel.gaussian_noise.y*accelModel.gaussian_noise.y/(gravity_length*gravity_length);
-  } else {
-    imuMsg.orientation_covariance[0] = -1;
-    imuMsg.orientation_covariance[4] = -1;
-  }
+  // imuMsg.orientation_covariance[8] = headingModel.gaussian_noise*headingModel.gaussian_noise;
+  // if (gravity_length > 0.0) {
+  //   imuMsg.orientation_covariance[0] = accelModel.gaussian_noise.x*accelModel.gaussian_noise.x/(gravity_length*gravity_length);
+  //   imuMsg.orientation_covariance[4] = accelModel.gaussian_noise.y*accelModel.gaussian_noise.y/(gravity_length*gravity_length);
+  // } else {
+  //   imuMsg.orientation_covariance[0] = -1;
+  //   imuMsg.orientation_covariance[4] = -1;
+  // }
 
   // publish to ros
   pub_.publish(imuMsg);
